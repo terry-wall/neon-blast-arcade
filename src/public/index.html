@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Blast Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Start Screen -->
+        <div id="startScreen" class="overlay">
+            <div class="overlay-content">
+                <h1 class="neon-title">NEON BLAST</h1>
+                <h2 class="neon-subtitle">ARCADE</h2>
+                <div class="menu-options">
+                    <button id="singlePlayerBtn" class="neon-button">SINGLE PLAYER</button>
+                    <button id="multiPlayerBtn" class="neon-button">MULTIPLAYER</button>
+                    <button id="leaderboardBtn" class="neon-button">LEADERBOARD</button>
+                </div>
+                <div class="controls-info">
+                    <p>WASD or Arrow Keys to Move</p>
+                    <p>Space or Click to Shoot</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multiplayer Setup Screen -->
+        <div id="multiplayerScreen" class="overlay hidden">
+            <div class="overlay-content">
+                <h2 class="neon-subtitle">MULTIPLAYER SETUP</h2>
+                <div class="input-group">
+                    <label for="playerName">Player Name:</label>
+                    <input type="text" id="playerName" maxlength="20" placeholder="Enter your name">
+                </div>
+                <div class="menu-options">
+                    <button id="joinGameBtn" class="neon-button">JOIN GAME</button>
+                    <button id="backToMenuBtn" class="neon-button">BACK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" class="hidden"></canvas>
+
+        <!-- HUD -->
+        <div id="hud" class="hidden">
+            <div class="hud-left">
+                <div class="stat">SCORE: <span id="score">0</span></div>
+                <div class="stat">LIVES: <span id="lives">3</span></div>
+                <div class="stat">LEVEL: <span id="level">1</span></div>
+            </div>
+            <div class="hud-right">
+                <div class="stat">ENERGY: <div id="energyBar"><div id="energyFill"></div></div></div>
+                <div class="stat" id="multiplayerInfo"></div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="overlay hidden">
+            <div class="overlay-content">
+                <h2 class="neon-subtitle game-over-title">GAME OVER</h2>
+                <div class="final-stats">
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <p>Level Reached: <span id="finalLevel">1</span></p>
+                </div>
+                <div class="input-group" id="nameInputGroup">
+                    <label for="scorePlayerName">Enter your name:</label>
+                    <input type="text" id="scorePlayerName" maxlength="20" placeholder="Player">
+                </div>
+                <div class="menu-options">
+                    <button id="submitScoreBtn" class="neon-button">SUBMIT SCORE</button>
+                    <button id="playAgainBtn" class="neon-button">PLAY AGAIN</button>
+                    <button id="mainMenuBtn" class="neon-button">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboardScreen" class="overlay hidden">
+            <div class="overlay-content">
+                <h2 class="neon-subtitle">LEADERBOARD</h2>
+                <div id="leaderboardList"></div>
+                <div class="menu-options">
+                    <button id="backFromLeaderboardBtn" class="neon-button">BACK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div id="mobileControls" class="hidden">
+            <div class="virtual-joystick">
+                <div id="joystickOuter">
+                    <div id="joystickInner"></div>
+                </div>
+            </div>
+            <button id="shootButton" class="mobile-shoot-btn">SHOOT</button>
+        </div>
+    </div>
+
+    <!-- Audio Context -->
+    <div id="audioContext" style="display: none;"></div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="assets/sounds.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
